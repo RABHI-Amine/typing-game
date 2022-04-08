@@ -1,17 +1,20 @@
 <div class="container">
     <div class="columns is-centered">
-        <div class="box column is-one-third">
-            <h1 class="title has-text-centered">Typing Game</h1>
-
-        <p class="has-text-centered">Randomly Generated Text should go here.</p>
-
+      <div class="box column is-one-third">
+        <h1 class="title has-text-centered">Typing challenge</h1>
+        <p class="has-text-centered">
+          <span 
+            *ngFor="let letter of randomText.split('');let i = index"
+            [class]="compare(entredText[i],letter)"
+            >{{letter}}</span>
+        </p>
+        <br>
         <div class="field">
-            <input class="input"/>
+          <input class="input" type="text " (input)="onInput($any($event.target).value)"/>
         </div>
-
-        <div class="box has-text-centered">
-            <h1 class="title ">Success!</h1>
+        <div class="box has-text-centered" *ngIf="entredText === randomText">
+          <h1 class="title ">Success !!</h1>
         </div>
-        </div>
+      </div>
     </div>
-</div>
+  </div>
